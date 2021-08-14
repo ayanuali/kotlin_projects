@@ -28,12 +28,12 @@ class MainActivity : AppCompatActivity() {
     private fun addNickname(view: View) {
 //        val editText: EditText = findViewById(R.id.nickname_edit)
 //        val nicknameTextView: TextView = findViewById(R.id.nickname)
-
-        binding.nickname.text = binding.nicknameEdit.text
-        binding.nicknameEdit.visibility = View.GONE
-//        view.visibility = View.GONE
-        binding.doneButton.visibility = View.GONE
-        binding.nickname.visibility = View.VISIBLE
+        binding.apply {
+            nickname.text = binding.nicknameEdit.text
+            nicknameEdit.visibility = View.GONE
+            doneButton.visibility = View.GONE
+            nickname.visibility = View.VISIBLE
+        }
 
         val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(view.windowToken, 0)

@@ -12,11 +12,12 @@ import androidx.databinding.DataBindingUtil
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+    private val myName: MyName = MyName("John Doe")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 //        setContentView(R.layout.activity_main)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-
+        binding.myName = myName
 //        findViewById<Button>(R.id.done_button).setOnClickListener{
 //            addNickname(it)
 //        }
@@ -29,7 +30,10 @@ class MainActivity : AppCompatActivity() {
 //        val editText: EditText = findViewById(R.id.nickname_edit)
 //        val nicknameTextView: TextView = findViewById(R.id.nickname)
         binding.apply {
-            nickname.text = binding.nicknameEdit.text
+//            nickname.text = binding.nicknameEdit.text
+            myName?.nickname = nicknameEdit.text.toString()
+            // Invalidate all binding expressions and request a new rebind to refresh UI
+            invalidateAll()
             nicknameEdit.visibility = View.GONE
             doneButton.visibility = View.GONE
             nickname.visibility = View.VISIBLE

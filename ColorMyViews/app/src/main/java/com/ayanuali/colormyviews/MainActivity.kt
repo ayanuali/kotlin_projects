@@ -4,6 +4,7 @@ import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import com.ayanuali.colormyviews.databinding.ActivityMainBinding
 
@@ -26,7 +27,10 @@ class MainActivity : AppCompatActivity() {
                 boxThreeText,
                 boxFourText,
                 boxFiveText,
-                constraintLayout
+                constraintLayout,
+                greenButton,
+                yellowButton,
+                redButton
             )
 
             for (i in listOfViews) {
@@ -48,9 +52,9 @@ class MainActivity : AppCompatActivity() {
             R.id.box_five_text -> view.setBackgroundResource(android.R.color.holo_green_light)
 
             // Boxes using custom colors for background
-            R.id.red_button -> view.setBackgroundResource(R.color.my_red)
-            R.id.yellow_button -> view.setBackgroundResource(R.color.my_yellow)
-            R.id.green_button -> view.setBackgroundResource(R.color.my_green)
+            R.id.red_button -> view.setBackgroundColor(ContextCompat.getColor(this, R.color.my_red))
+            R.id.yellow_button -> view.setBackgroundColor(ContextCompat.getColor(this, R.color.my_yellow))
+            R.id.green_button -> view.setBackgroundColor(ContextCompat.getColor(this, R.color.my_green))
 
             else -> view.setBackgroundColor(Color.LTGRAY)
         }

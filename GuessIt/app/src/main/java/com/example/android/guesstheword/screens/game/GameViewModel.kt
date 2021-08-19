@@ -19,7 +19,7 @@ class GameViewModel : ViewModel() {
         resetList()
         nextWord()
         score.value = 0
-        word.value = ""
+        word.value = wordList.removeAt(0)
     }
 
     override fun onCleared() {

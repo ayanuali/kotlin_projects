@@ -64,9 +64,6 @@ class GameFragment : Fragment() {
 
         Log.i("GameFragment", "GameViewModel called")
 
-//        resetList()
-//        nextWord()
-
         binding.correctButton.setOnClickListener {
             gameViewModel.onCorrect()
         }
@@ -86,19 +83,4 @@ class GameFragment : Fragment() {
         val action = GameFragmentDirections.actionGameToScore(gameViewModel.score.value ?: 0)
         findNavController(this).navigate(action)
     }
-
-
-    /** Methods for buttons presses **/
-
-//    private fun onSkip() {
-//        score--
-//        nextWord()
-//    }
-//
-//    private fun onCorrect() {
-//        score++
-//        nextWord()
-//    }
-
-    /** Methods for updating the UI **/
 }

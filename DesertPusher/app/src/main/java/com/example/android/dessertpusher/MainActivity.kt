@@ -27,11 +27,13 @@ import androidx.core.app.ShareCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.LifecycleObserver
 import com.example.android.dessertpusher.databinding.ActivityMainBinding
+import timber.log.Timber
 
 class MainActivity : AppCompatActivity(), LifecycleObserver {
 
     private var revenue = 0
     private var dessertsSold = 0
+    private lateinit var dessertTimer: DessertTimer
 
     // Contains all the views
     private lateinit var binding: ActivityMainBinding
@@ -70,6 +72,8 @@ class MainActivity : AppCompatActivity(), LifecycleObserver {
 
         // Use Data Binding to get reference to the views
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+
+        dessertTimer = DessertTimer()
 
         binding.dessertButton.setOnClickListener {
             onDessertClicked()
@@ -152,6 +156,33 @@ class MainActivity : AppCompatActivity(), LifecycleObserver {
 
     override fun onStart() {
         super.onStart()
-        Log.i("MainActivity", "onStart created")
+        Timber.i("onStart triggered")
+//        dessertTimer.startTimer()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Timber.i("onResume triggered")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Timber.i("onPause triggered")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Timber.i("onDestroy triggered")
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+        Timber.i("onRestart triggered")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Timber.i("onStop triggered")
+//        dessertTimer.stopTimer()
     }
 }

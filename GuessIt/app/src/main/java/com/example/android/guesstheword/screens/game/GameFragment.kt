@@ -17,6 +17,7 @@
 package com.example.android.guesstheword.screens.game
 
 import android.os.Bundle
+import android.text.format.DateUtils
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -55,6 +56,14 @@ class GameFragment : Fragment() {
                 gameViewModel.onGameFinishComplete()
             }
         })
+
+        gameViewModel.timerString.observe(this, Observer { newTime ->
+            binding.timerText.text = DateUtils.formatElapsedTime(newTime)
+        })
+
+//        gameViewModel.timerFinished.observe(this, Observer { timerFinished ->
+//            Toast.makeText(this.activity, "timer finished", Toast.LENGTH_SHORT)
+//        })
     }
 
     override fun onCreateView(

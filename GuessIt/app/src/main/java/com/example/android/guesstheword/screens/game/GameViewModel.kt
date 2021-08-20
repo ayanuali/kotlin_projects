@@ -3,9 +3,9 @@ package com.example.android.guesstheword.screens.game
 import android.os.CountDownTimer
 import android.text.format.DateUtils
 import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 
 class GameViewModel : ViewModel() {
@@ -40,18 +40,17 @@ class GameViewModel : ViewModel() {
 
     private val timer: CountDownTimer
 
-    private val _timerString = MutableLiveData<Long>()
-    val timerString: LiveData<Long>
-        get() = _timerString
+    private val _currentTime = MutableLiveData<Long>()
+    val currentTime: LiveData<Long>
+        get() = _currentTime
 
-//    private val _timerFinished = MutableLiveData<Boolean>()
-//    val timerFinished: LiveData<Boolean>
-//        get() = _timerFinished
+    val currentTimeString = Transformations.map(currentTime, { time ->
+        DateUtils.formatElapsedTime(time)
+    })
 
     init {
         Log.i("GameViewModel", "GameViewModel created")
         _eventGameFinish.value = false
-//        _timerFinished.value = true
         resetList()
         nextWord()
         _score.value = 0
@@ -59,14 +58,11 @@ class GameViewModel : ViewModel() {
 
         timer = object : CountDownTimer(COUNTDOWN_TIME, ONE_SECOND) {
             override fun onTick(millisUntilFinished: Long) {
-//                Log.i("GameTimer", "millisUntilFinished = " + millisUntilFinished)
-//                Log.i("GameTimer", DateUtils.formatElapsedTime(millisUntilFinished))
-                _timerString.value = millisUntilFinished / ONE_SECOND
+                _currentTime.value = millisUntilFinished / ONE_SECOND
             }
 
             override fun onFinish() {
-//                onTimerFinished()
-                _timerString.value = DONE
+                _currentTime.value = DONE
                 _eventGameFinish.value = true
             }
         }
@@ -118,10 +114,7 @@ class GameViewModel : ViewModel() {
             //reset the words list
             resetList()
         }
-//            _eventGameFinish.value = true
-//        } else {
         _word.value = wordList.removeAt(0)
-//        }
     }
 
     fun onSkip() {
@@ -137,8 +130,4 @@ class GameViewModel : ViewModel() {
     fun onGameFinishComplete() {
         _eventGameFinish.value = false
     }
-
-//    fun onTimerFinished() {
-//        _timerFinished.value = true
-//    }
 }

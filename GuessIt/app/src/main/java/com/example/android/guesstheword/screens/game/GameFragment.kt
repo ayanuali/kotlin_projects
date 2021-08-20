@@ -42,14 +42,6 @@ class GameFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         gameViewModel = ViewModelProvider(this).get(GameViewModel::class.java)
-        gameViewModel.score.observe(this, Observer { newScore ->
-            binding.scoreText.text = newScore.toString()
-        })
-
-        gameViewModel.word.observe(this, Observer { newWord ->
-            binding.wordText.text = newWord
-        })
-
         gameViewModel.eventGameFinish.observe(this, Observer { hasFinished ->
             if (hasFinished) {
                 gameFinished()
@@ -76,6 +68,7 @@ class GameFragment : Fragment() {
         )
 
         binding.gameViewModel = gameViewModel
+        binding.setLifecycleOwner(this)
 
         Log.i("GameFragment", "GameViewModel called")
 

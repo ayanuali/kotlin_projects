@@ -60,10 +60,6 @@ class GameFragment : Fragment() {
         gameViewModel.timerString.observe(this, Observer { newTime ->
             binding.timerText.text = DateUtils.formatElapsedTime(newTime)
         })
-
-//        gameViewModel.timerFinished.observe(this, Observer { timerFinished ->
-//            Toast.makeText(this.activity, "timer finished", Toast.LENGTH_SHORT)
-//        })
     }
 
     override fun onCreateView(
@@ -79,14 +75,16 @@ class GameFragment : Fragment() {
             false
         )
 
+        binding.gameViewModel = gameViewModel
+
         Log.i("GameFragment", "GameViewModel called")
 
-        binding.correctButton.setOnClickListener {
-            gameViewModel.onCorrect()
-        }
-        binding.skipButton.setOnClickListener {
-            gameViewModel.onSkip()
-        }
+//        binding.correctButton.setOnClickListener {
+//            gameViewModel.onCorrect()
+//        }
+//        binding.skipButton.setOnClickListener {
+//            gameViewModel.onSkip()
+//        }
 
         return binding.root
 

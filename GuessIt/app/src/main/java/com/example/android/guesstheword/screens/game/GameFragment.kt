@@ -79,15 +79,7 @@ class GameFragment : Fragment() {
 
         Log.i("GameFragment", "GameViewModel called")
 
-//        binding.correctButton.setOnClickListener {
-//            gameViewModel.onCorrect()
-//        }
-//        binding.skipButton.setOnClickListener {
-//            gameViewModel.onSkip()
-//        }
-
         return binding.root
-
     }
 
 

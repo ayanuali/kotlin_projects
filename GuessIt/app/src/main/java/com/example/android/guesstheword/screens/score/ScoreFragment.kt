@@ -72,10 +72,12 @@ class ScoreFragment : Fragment() {
             false
         )
 
+        binding.scoreViewModel = scoreViewModel
+
         // Get args using by navArgs property delegate
 //        val scoreFragmentArgs by navArgs<ScoreFragmentArgs>()
 
-        binding.playAgainButton.setOnClickListener { scoreViewModel.onPlayAgain() }
+//        binding.playAgainButton.setOnClickListener { scoreViewModel.onPlayAgain() }
 
         return binding.root
     }

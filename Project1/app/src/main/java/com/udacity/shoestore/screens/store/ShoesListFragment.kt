@@ -12,15 +12,6 @@ import com.udacity.shoestore.databinding.ShoesListFragmentBinding
 
 class ShoesListFragment : Fragment() {
     lateinit var binding: ShoesListFragmentBinding
-    lateinit var shoesListViewModel: ShoesListViewModel
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        shoesListViewModel = ViewModelProvider(this).get(ShoesListViewModel::class.java)
-
-
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -28,6 +19,7 @@ class ShoesListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.shoes_list_fragment, container, false)
+        setHasOptionsMenu(true)
         return binding.root
     }
 }

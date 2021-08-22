@@ -36,11 +36,13 @@ class WelcomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.welcome_fragment, container, false)
+        //view model binding
         binding.welcomViewModel = welcomeViewModel
         return binding.root
     }
 
     fun onGetStartedEvent() {
+        //actions from welcome to instructions
         val action = WelcomeFragmentDirections.actionWelcomeFragmentToInstructionsFragment()
         findNavController().navigate(action)
     }

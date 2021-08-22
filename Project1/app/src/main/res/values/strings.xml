@@ -2,4 +2,7 @@
     <string name="app_name">ShoeStore</string>
     <string name="text_login">Login</string>
     <string name="text_signup">Sign Up</string>
+    <string name="text_welcome">Welcome!</string>
+    <string name="text_welcome_msg">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras congue sapien id cursus molestie. Nunc et quam eu ipsum vestibulum laoreet. Sed egestas, orci ut vehicula accumsan, velit lorem elementum erat, id ultrices libero nisl vel lectus. Mauris quis dictum metus. Phasellus posuere nulla eu felis ullamcorper dignissim. Mauris eleifend ut mi ut mattis. Curabitur mattis, lacus eget luctus consequat, sem odio condimentum velit, eget fringilla nisl velit vel orci. Praesent iaculis dictum nulla, non fringilla sapien dictum ac. Pellentesque ac ullamcorper diam, vitae semper eros. Morbi eget pulvinar arcu. Vivamus sollicitudin nulla consectetur, venenatis urna nec, scelerisque quam. Quisque ut dictum orci. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nunc tristique ac nunc et hendrerit. Duis purus nibh, rutrum vel mi sit amet, semper malesuada nisl. Maecenas ornare ultrices quam non mattis.</string>
+    <string name="string_get_started">Get started</string>
 </resources>

@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration)
         NavigationUI.setupWithNavController(binding.navView, navController)
         navController.addOnDestinationChangedListener @Suppress("UNUSED_VARIABLE") { nc: NavController, nd: NavDestination, args: Bundle? ->
-            if (nd.id == R.id.shoesListFragment) {
+            if (nd.id == R.id.shoesListFragment || nd.id == R.id.shoeDetailFragment) {
                 supportActionBar?.show()
                 drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
             } else {

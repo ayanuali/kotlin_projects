@@ -29,20 +29,18 @@ class MainActivity : AppCompatActivity() {
         val navController = this.findNavController(R.id.navHostFragment)
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.welcomeFragment,
-                R.id.instructionsFragment,
                 R.id.shoesListFragment
             ), drawerLayout
         )
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration)
         NavigationUI.setupWithNavController(binding.navView, navController)
         navController.addOnDestinationChangedListener @Suppress("UNUSED_VARIABLE") { nc: NavController, nd: NavDestination, args: Bundle? ->
-            if (nd.id == nc.graph.startDestination) {
-                drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
-                supportActionBar?.hide()
-            } else {
+            if (nd.id == R.id.shoesListFragment) {
                 supportActionBar?.show()
                 drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
+            } else {
+                drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
+                supportActionBar?.hide()
             }
         }
     }

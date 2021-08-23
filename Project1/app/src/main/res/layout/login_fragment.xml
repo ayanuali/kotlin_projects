@@ -55,7 +55,7 @@
             android:id="@+id/signup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="@{() -> loginViewModel.onSignUp()}"
+            android:onClick="@{() -> loginViewModel.onLogin()}"
             android:text="@string/text_signup"
             app:layout_constraintBaseline_toBaselineOf="@+id/login"
             app:layout_constraintEnd_toEndOf="@+id/password"

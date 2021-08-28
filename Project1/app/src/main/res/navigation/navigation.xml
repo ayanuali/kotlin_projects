@@ -38,6 +38,10 @@
         <action
             android:id="@+id/action_shoesListFragment_to_shoeDetailFragment"
             app:destination="@id/shoeDetailFragment" />
+        <argument
+            android:name="shoeAdded"
+            app:argType="boolean"
+            android:defaultValue="false" />
     </fragment>
     <fragment
         android:id="@+id/shoeDetailFragment"
@@ -45,6 +49,11 @@
         android:label="ShoeDetailFragment" >
         <action
             android:id="@+id/action_shoeDetailFragment_to_shoesListFragment"
-            app:destination="@id/shoesListFragment" />
+            app:destination="@id/shoesListFragment" >
+            <argument
+                android:name="shoeAdded"
+                app:argType="boolean"
+                android:defaultValue="false" />
+        </action>
     </fragment>
 </navigation>

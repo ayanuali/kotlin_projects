@@ -33,13 +33,11 @@ class ShoesListFragment : Fragment() {
 
         activityViewModel = ViewModelProvider(activity!!).get(ActivityViewModel::class.java)
 
-        if(shoeAdded) {
-//            val shoe = Shoe("testname", 12.00, "testcompany", "testdescription")
-//            activityViewModel.addShoeToShoesList(shoe)
-        }
         activityViewModel.shoesList.observe(viewLifecycleOwner, Observer {
-            Timber.i("shoes shoeList $it")
-            Timber.i("shoes shoeList size ${it.size}")
+            if (shoeAdded) {
+//                Timber.i("shoes shoeList $it")
+//                Timber.i("shoes shoeList size ${it.size}")
+            }
         })
 
         binding.addShoe.setOnClickListener {

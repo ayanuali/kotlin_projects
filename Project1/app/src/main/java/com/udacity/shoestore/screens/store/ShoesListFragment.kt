@@ -32,13 +32,11 @@ class ShoesListFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.shoes_list_fragment, container, false)
 
         val shoeAdded = args.shoeAdded
-        Timber.i("shoes shoeAdded $shoeAdded")
+//        Timber.i("shoes shoeAdded $shoeAdded")
 
         activityViewModel = ViewModelProvider(activity!!).get(ActivityViewModel::class.java)
-//        activityViewModel.saveStateOfView(binding.shoeList)
 
         activityViewModel.shoesList.observe(viewLifecycleOwner, Observer {
-//            if (shoeAdded) {
             for (shoe in it) {
                 val shoeItem: LinearLayout = LinearLayout(context)
                 val params: LinearLayout.LayoutParams = LinearLayout.LayoutParams(
@@ -81,9 +79,6 @@ class ShoesListFragment : Fragment() {
 
                 binding.shoeList.addView(shoeItem, 0)
                 binding.shoeList.invalidate()
-//                activityViewModel.shoesListView.value!!.addView(shoeItem, 0)
-//                activityViewModel.saveStateOfView(activityViewModel.shoesListView.value!!)
-//            }
             }
         })
 

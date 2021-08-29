@@ -12,10 +12,6 @@ class ActivityViewModel : ViewModel() {
     val shoesList: LiveData<MutableList<Shoe>>
         get() = _shoesList
 
-    private val _shoesListView = MutableLiveData<LinearLayout>()
-//    val shoesListView: LiveData<LinearLayout>
-//        get() = _shoesListView
-
     init {
         Timber.i("ActivityViewModel initialized")
         _shoesList.value = mutableListOf()
@@ -26,13 +22,7 @@ class ActivityViewModel : ViewModel() {
     }
 
     fun addShoeToShoesList(shoe: Shoe) {
-        Timber.i("shoeList shoe $shoe")
         _shoesList.value?.add(shoe)
-        Timber.i("shoeList _shoesList.value ${_shoesList.value}")
         _shoesList.value = _shoesList.value
     }
-//
-//    fun saveStateOfView(view: LinearLayout) {
-//        _shoesListView.value = view
-//    }
 }

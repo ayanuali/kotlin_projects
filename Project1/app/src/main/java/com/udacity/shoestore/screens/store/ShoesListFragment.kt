@@ -4,6 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
+import android.widget.TextView
+import androidx.core.view.marginTop
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -32,11 +35,55 @@ class ShoesListFragment : Fragment() {
         Timber.i("shoes shoeAdded $shoeAdded")
 
         activityViewModel = ViewModelProvider(activity!!).get(ActivityViewModel::class.java)
+//        activityViewModel.saveStateOfView(binding.shoeList)
 
         activityViewModel.shoesList.observe(viewLifecycleOwner, Observer {
-            if (shoeAdded) {
-//                Timber.i("shoes shoeList $it")
-//                Timber.i("shoes shoeList size ${it.size}")
+//            if (shoeAdded) {
+            for (shoe in it) {
+                val shoeItem: LinearLayout = LinearLayout(context)
+                val params: LinearLayout.LayoutParams = LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.MATCH_PARENT,
+                    LinearLayout.LayoutParams.WRAP_CONTENT
+                )
+                params.setMargins(16, 16, 16, 16)
+                shoeItem.layoutParams = params
+                shoeItem.orientation = LinearLayout.VERTICAL
+
+                val params1 = LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.MATCH_PARENT,
+                    LinearLayout.LayoutParams.WRAP_CONTENT
+                )
+                params1.setMargins(0, 8, 0, 8)
+
+                val shoeName: TextView = TextView(context)
+                shoeName.layoutParams = params1
+                shoeName.setText("Name: ${shoe.name}")
+
+                shoeItem.addView(shoeName)
+
+                val shoeSize: TextView = TextView(context)
+                shoeSize.layoutParams = params1
+                shoeSize.setText("Size: ${shoe.size}")
+
+                shoeItem.addView(shoeSize)
+
+                val shoeCompany: TextView = TextView(context)
+                shoeCompany.layoutParams = params1
+                shoeCompany.setText("Company: ${shoe.company}")
+
+                shoeItem.addView(shoeCompany)
+
+                val shoeDesc: TextView = TextView(context)
+                shoeDesc.layoutParams = params1
+                shoeDesc.setText("Description: ${shoe.description}")
+
+                shoeItem.addView(shoeDesc)
+
+                binding.shoeList.addView(shoeItem, 0)
+                binding.shoeList.invalidate()
+//                activityViewModel.shoesListView.value!!.addView(shoeItem, 0)
+//                activityViewModel.saveStateOfView(activityViewModel.shoesListView.value!!)
+//            }
             }
         })
 

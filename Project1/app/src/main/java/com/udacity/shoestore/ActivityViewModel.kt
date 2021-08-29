@@ -7,21 +7,30 @@ import com.udacity.shoestore.models.Shoe
 import timber.log.Timber
 
 class ActivityViewModel : ViewModel() {
-    private val _shoesList = MutableLiveData<List<Shoe>>()
-    val shoesList: LiveData<List<Shoe>>
+    private val _shoesList = MutableLiveData<MutableList<Shoe>>()
+    val shoesList: LiveData<MutableList<Shoe>>
         get() = _shoesList
 
     init {
         Timber.i("ActivityViewModel initialized")
-        _shoesList.value = listOf()
+        _shoesList.value = mutableListOf()
+    }
+
+    fun <T> MutableLiveData<T>.notifyObserver() {
+        this.value = this.value
     }
 
     fun addShoeToShoesList(shoe: Shoe) {
-        val list = listOf<Shoe>()
-        if (_shoesList.value != null) {
-            list.plus(_shoesList.value!!)
+        Timber.i("shoeList shoe $shoe")
+        val list = mutableListOf<Shoe>()
+        if (_shoesList.value != null && _shoesList.value!!.isNotEmpty()) {
+            list.addAll(_shoesList.value!!)
         }
-        list.plus(shoe)
-        _shoesList.value = list
+        list.add(shoe)
+        Timber.i("shoeList list $list")
+//        _shoesList.value?.add(shoe)
+        Timber.i("shoeList _shoesList.value ${_shoesList.value}")
+        _shoesList.value?.addAll(list)
+        Timber.i("shoeList after _shoesList.value ${_shoesList.value}")
     }
 }

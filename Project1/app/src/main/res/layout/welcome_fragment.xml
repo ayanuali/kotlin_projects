@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
 
@@ -10,13 +8,18 @@
             type="com.udacity.shoestore.screens.store.WelcomeViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <!--    it was logical to use linearlayout with vertical orientation and gravity center horizontal/vertical,
+     since view elements are positioned one after another vertically.-->
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal|center_vertical"
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/welcome_title"
-            android:layout_width="379dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
@@ -25,25 +28,18 @@
             android:text="@string/text_welcome"
             android:textAlignment="center"
             android:textColor="@color/colorPrimaryDark"
-            android:textSize="24sp"
-            app:layout_constraintBottom_toTopOf="@+id/welcome_text"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:textSize="24sp" />
 
         <TextView
             android:id="@+id/welcome_text"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:fontFamily="@font/roboto"
             android:text="@string/text_welcome_msg"
             android:textAlignment="center"
-            android:textColor="@android:color/black"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:textColor="@android:color/black" />
 
         <Button
             android:id="@+id/get_started"
@@ -53,9 +49,6 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:onClick="@{() -> welcomViewModel.onGetStarted()}"
-            android:text="@string/string_get_started"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/welcome_text" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            android:text="@string/string_get_started" />
+    </LinearLayout>
 </layout>

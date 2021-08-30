@@ -10,6 +10,10 @@
             type="com.udacity.shoestore.screens.login.LoginViewModel" />
     </data>
 
+    <!--    I am sure I could have used Linearlayout with vertical orientation, but decided to use buttons aligned one after another,
+            if I used LinearLayout, I would have had to add another linearlayout with horizontal orientation and weight, which would have created
+            nested views, which is not good for performance -->
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">

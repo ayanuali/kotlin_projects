@@ -6,6 +6,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
+import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
@@ -46,6 +47,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
+        if(Navigation.findNavController(this, R.id.navHostFragment).currentDestination?.id == R.id.loginFragment) {
+            finish()
+        }
         super.onBackPressed()
     }
 

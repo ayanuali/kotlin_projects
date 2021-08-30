@@ -12,6 +12,11 @@ class ActivityViewModel : ViewModel() {
     val shoesList: LiveData<MutableList<Shoe>>
         get() = _shoesList
 
+    var shoeName = MutableLiveData<String>()
+    var shoeSize = MutableLiveData<String>()
+    var shoeCompany = MutableLiveData<String>()
+    var shoeDesc = MutableLiveData<String>()
+
     init {
         Timber.i("ActivityViewModel initialized")
         _shoesList.value = mutableListOf()

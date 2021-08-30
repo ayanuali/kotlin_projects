@@ -25,6 +25,8 @@ class ShoeDetailFragment : Fragment() {
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.shoe_detail_fragment, container, false)
         activityViewModel = ViewModelProvider(activity!!).get(ActivityViewModel::class.java)
+        binding.viewModel = activityViewModel
+        binding.lifecycleOwner = this
         binding.cancel.setOnClickListener {
             findNavController().navigate(
                 ShoeDetailFragmentDirections.actionShoeDetailFragmentToShoesListFragment()
@@ -64,7 +66,8 @@ class ShoeDetailFragment : Fragment() {
 
                 activityViewModel.addShoeToShoesList(shoe)
                 findNavController().navigate(
-                    ShoeDetailFragmentDirections.actionShoeDetailFragmentToShoesListFragment().setShoeAdded(true)
+                    ShoeDetailFragmentDirections.actionShoeDetailFragmentToShoesListFragment()
+                        .setShoeAdded(true)
                 )
             }
         }

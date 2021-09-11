@@ -44,9 +44,11 @@ class SleepQualityViewModel(private val sleepNightKey: Long = 0L, val database: 
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
                 val tonight = database.get(sleepNightKey)
-                tonight.sleepQuality = quality
-                database.update(tonight)
-                _navigateToSleepTracker.postValue(true)
+                if (tonight != null) {
+                    tonight.sleepQuality = quality
+                    database.update(tonight)
+                    _navigateToSleepTracker.postValue(true)
+                }
             }
         }
     }

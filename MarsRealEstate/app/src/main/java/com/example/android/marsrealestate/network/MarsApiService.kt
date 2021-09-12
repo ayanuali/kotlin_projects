@@ -34,13 +34,14 @@ private val retrofit =
     Retrofit.Builder()
         .addConverterFactory(
             MoshiConverterFactory.create(moshi)
-        ).baseUrl(BASE_URL).build()
+        ).
+        baseUrl(BASE_URL).build()
 
 // TODO (03) Implement the MarsApiService interface with @GET getProperties returning a String
 interface MarseApiService {
 
     @GET("realestate")
-    fun getProperties(): Call<List<MarsProperty>>
+    suspend fun getProperties(): List<MarsProperty>
 }
 // TODO (04) Create the MarsApi object using Retrofit to implement the MarsApiService
 
